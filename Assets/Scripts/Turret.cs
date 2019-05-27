@@ -66,7 +66,6 @@ public class Turret : MonoBehaviour
             else
             {
                 Debug.Log("<color=red> TORRE " + turretID + " DESACTIVADA </color>");
-                GameManager.anim.SetTrigger("warningFlag");
             }
 
             fireCountdown = 1f / fireRate;

@@ -16,14 +16,12 @@ public class EnemyStats : CharacterStats
 
     IEnumerator DieFun()
     {
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1.4f);
         switch (golemID)
         {
             case 1:
                 GameManager.freeOne = true;
                 GameManager.anim2.SetTrigger("warningFlag");
-                yield return new WaitForSeconds(3f);
-                GameManager.anim2.SetTrigger("warningOut");
                 Debug.Log("<color=cyan>TORRE UNO DESACTIVADA</color>");
                 break;
             case 2:
@@ -46,6 +44,8 @@ public class EnemyStats : CharacterStats
                 break;
         }
         Destroy(gameObject);
+        yield return new WaitForSeconds(3f);
+        GameManager.anim2.SetTrigger("warningOut");
 
     }
 
