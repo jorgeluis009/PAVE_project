@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     private Transform target;
     public float speed = 70f;
-    public float damage = 50f;
+    public float damage = 30f;
     public GameObject ImpactEffect;
 
     public void Seek(Transform _target)

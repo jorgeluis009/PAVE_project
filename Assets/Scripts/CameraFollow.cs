@@ -17,8 +17,7 @@ namespace CompleteProject
 
         void FixedUpdate()
         {
-            
-            if (target.position != null)
+            if (target != null && target.position != null)
             {
                 Vector3 targetCamPos = target.position + offset;
                 transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);

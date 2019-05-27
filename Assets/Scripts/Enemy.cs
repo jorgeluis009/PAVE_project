@@ -10,15 +10,16 @@ public class Enemy : MonoBehaviour
     private int wavepointIndex = 0;
 
     private float health;
-    public float startHealth = 100;
+    public float startHealth = GameManager.startingHealth;
     // public int worth = 50;
 
     // public Image healthBar;
+    public event System.Action<int, int> OnHealthChanged;
 
     void Start()
     {
        // target = WayPoints.points[0];
-        health = startHealth;
+        health = GameManager.startingHealth;
     }
 
     void Update()
@@ -46,8 +47,15 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
-        // healthBar.fillAmount = health / startHealth;
+        if (OnHealthChanged != null)
+        {
+            Debug.Log("Health: <color=green>startHealth " + startHealth + "</color>");
+            Debug.Log("Health: <color=green>health " + health + "</color>");
 
+            OnHealthChanged((int)startHealth, (int)health);
+        }
+        // healthBar.fillAmount = health / startHealth;
+        // Debug.Log("Health: <color=green>"+ health +"</color>");
         if (health <= 0)
         {
             Die();
